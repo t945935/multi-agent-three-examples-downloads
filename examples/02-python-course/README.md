@@ -28,6 +28,18 @@
 回報執行命令與結果；無執行環境時明確標示未驗證。
 ```
 
+## 可執行實例
+
+- `organize_downloads.py`：預設預覽，使用 `--apply` 才移動，且不覆寫同名檔案。
+- `test_organize_downloads.py`：涵蓋一般分類、空資料夾、無副檔名、同名檔案及子資料夾。
+
+請在自行建立的測試資料夾執行：
+
+```bash
+python organize_downloads.py ./測試資料夾
+python -m unittest test_organize_downloads.py
+```
+
 ## 驗收清單
 
 - [ ] 教材能讓目標讀者逐步完成操作。
