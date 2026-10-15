@@ -1,32 +1,29 @@
-# 《用三個實例學會多 Agent 應用》讀者配件
+# 多 Agent 三實例：讀者配件 1.0.0
 
-這裡提供搭配學習使用的提示詞、實作說明、驗收清單與紀錄模板。
+> 書籍讀者請下載 [1.0.0 固定配件 ZIP](https://github.com/t945935/multi-agent-three-examples-downloads/releases/download/v1.0.0/multi-agent-reader-resources-1.0.0.zip)，不要以 Code → Download ZIP 代替固定版本。
+>
+> [版本說明與附件](https://github.com/t945935/multi-agent-three-examples-downloads/releases/tag/v1.0.0)。固定 ZIP 的 SHA-256：`617a21d5e59e2ee7766a68c51fb15b67db5244e72a006c08fba33e343d5e5c79`。
+>
+> 本庫主分支為來源檢視用；根目錄 README 與 manifest 含公開下載說明，與固定 ZIP 的這兩個文件不同。範例、測試、提示詞與模板 bytes 相同。書中完整性核對請使用固定 ZIP 的 manifest；主分支的 manifest 則另涵蓋 `.gitignore` 與本庫 README。
 
-## 下載配件
+本包僅含提示詞、原創範例、測試及可填寫模板，不含付費書稿或私人編輯紀錄。請先解壓縮到自行建立的練習工作區，不要在真實下載資料夾或個人檔案庫執行整理程式。
 
-**[下載全部配件 ZIP](https://github.com/t945935/multi-agent-three-examples-downloads/archive/refs/heads/main.zip)**
+## 環境與開始方式
 
-下載不需要 GitHub 帳號。下載後解壓縮，依序開啟各實例的 README.md 與 prompt.txt；Markdown 與文字檔都可用文字編輯器閱讀。ZIP 會跟隨 main 分支更新。
+書中命令採 Ubuntu／WSL 的 Bash；先確認 `python3 --version`、`node --version` 可執行。Python 建議 3.10 以上，Node.js 需支援 `node:assert/strict`。從本包根目錄執行：
 
-## 三個實例
+```bash
+python3 -m unittest discover -s examples/02-python-course -p 'test_*.py'
+node examples/03-search-bugfix/test_search.js
+```
 
-| 實例 | 學習重點 | 操作說明 | 提示詞 |
-| --- | --- | --- | --- |
-| 台南旅遊規劃 | 平行分工與整合 | [閱讀說明](examples/01-travel-planning/README.md) | [開啟提示詞](examples/01-travel-planning/prompt.txt) |
-| Python 教材製作 | 接力協作與交接 | [閱讀說明](examples/02-python-course/README.md) | [開啟提示詞](examples/02-python-course/prompt.txt) |
-| 網站搜尋錯誤修復 | 修復、審查與驗證 | [閱讀說明](examples/03-search-bugfix/README.md) | [開啟提示詞](examples/03-search-bugfix/prompt.txt) |
+預期 Python 跑 7 項測試成功，Node 顯示 5 個搜尋情境通過。測試使用臨時假資料；這不是 AI 自動分工系統，也不是網站 UI 驗收。
 
-另附 [實作紀錄模板](templates/run-record.md)，可複製後填寫分工、執行結果與驗證證據。
+## 配件入口
 
-## 開始練習
+- [旅遊規劃](examples/01-travel-planning/README.md)：提示詞、條件式規劃表；未指定日期，不提供保證可出發行程。
+- [Python 教材](examples/02-python-course/README.md)：預覽、套用、碰撞保留與非遞迴行為。
+- [搜尋修復](examples/03-search-bugfix/README.md)：故障模組、修正版與同一回歸測試。
+- [交接模板](templates/run-record.md)：記錄輸入、產物、命令、結果及限制。
 
-1. 先閱讀實例說明，確認需要的資料與執行環境。
-2. 將 prompt.txt 貼到支援子 Agent 的工具；也可以在不同對話視窗手動分工。
-3. 在不同視窗間交接時，提供共同檔案的位置與具體任務，請接手 Agent 重新讀取檔案。
-4. 按驗收清單核對結果，使用紀錄模板保存證據。
-
-配件除了提示詞與文件，也包含可獨立驗證的最小實例產物：Python 檔案整理程式、搜尋邏輯修復模組，以及台南行程整合範本。這些不是自動執行 Agent 的框架；網站修復仍未包含完整故障網站。
-
-## 問題回報
-
-可至本 repository 的 [Issues](https://github.com/t945935/multi-agent-three-examples-downloads/issues) 回報文件問題，附上實例名稱、操作步驟與錯誤訊息。請先移除個人資料及 API 金鑰。
+`VERSION` 應為 `1.0.0`；`manifest.json` 記錄其餘全部檔案的 SHA-256。以版本及內容清單為準，不把會變動的 main 分支當成固定教材版本。此包本地建置不代表 GitHub 已更新。

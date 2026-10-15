@@ -29,15 +29,18 @@ def category_for(path: Path) -> str:
     return CATEGORIES.get(path.suffix.lower(), "其他")
 
 
-def available_destination(destination: Path) -> Path:
-    """避免覆寫，必要時在檔名後加入序號。"""
-    if not destination.exists():
+def available_destination(
+    destination: Path, reserved: set[Path] | None = None
+) -> Path:
+    """避免覆寫既有或本批次已規劃的路徑，必要時加入序號。"""
+    reserved = reserved or set()
+    if not destination.exists() and destination not in reserved:
         return destination
     for number in range(1, 10_000):
         candidate = destination.with_name(
             f"{destination.stem}_{number}{destination.suffix}"
         )
-        if not candidate.exists():
+        if not candidate.exists() and candidate not in reserved:
             return candidate
     raise RuntimeError(f"找不到可用的檔名：{destination.name}")
 
@@ -48,11 +51,15 @@ def plan_moves(folder: Path) -> list[tuple[Path, Path]]:
         raise NotADirectoryError(f"不是資料夾：{folder}")
 
     moves = []
+    reserved_destinations: set[Path] = set()
     for source in sorted(folder.iterdir(), key=lambda item: item.name.lower()):
         if not source.is_file():
             continue
         target_dir = folder / category_for(source)
-        target = available_destination(target_dir / source.name)
+        target = available_destination(
+            target_dir / source.name, reserved_destinations
+        )
+        reserved_destinations.add(target)
         moves.append((source, target))
     return moves
 

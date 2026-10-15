@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "files": {
+    ".gitignore": "915e3c9802c3e56b4ef2a0e00892fcd5791d1346f622957e12196984d64132da",
+    "README.md": "70d9912059d0b8c86eb3a88088d581420b57794b4586af080a2eef2bb0517c42",
+    "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+    "examples/01-travel-planning/README.md": "9c483019b8a61f147f9ccdb1810a0e116b251161bcea2876ce3cb5703e188b70",
+    "examples/01-travel-planning/plan-template.md": "8c22ce70d6d17ee3cce98733719de53e8b9d751708fcc3b22317393f3855ae93",
+    "examples/01-travel-planning/prompt.txt": "5f5d2e43c966642457ad41de5bdd42c599ee50dfc7318cd4491943f58bdbbf73",
+    "examples/02-python-course/README.md": "6c4fedfef82f538dea75a5aa2409d09ad60cf0feb0373ba8d4cdd2f52442cc61",
+    "examples/02-python-course/organize_downloads.py": "66d410570669731c69b65a49cd98df7d5a14d66e82e3197b33ffedecaee0cea2",
+    "examples/02-python-course/prompt.txt": "058585bf4e166c4611436ad6e54b8b59c7ec321541e19befe284337f6c978ebd",
+    "examples/02-python-course/test_organize_downloads.py": "466b36813fb8cee339a26c84efcb031cd3bf936748f97f4e787fae72b809dd3e",
+    "examples/03-search-bugfix/README.md": "ae7bc1082835f0e80e2c2aa8378c210469e5fd67d4d71e24de2750eb33c01c8e",
+    "examples/03-search-bugfix/prompt.txt": "7092b6e32411c78832659ebb59448668ac1ccc5a3fd6732daebd5c5553dceffb",
+    "examples/03-search-bugfix/search.js": "9dc4be9625f4383b33b2e16b441a1e4b777a54d1a9155660320164551bfd646e",
+    "examples/03-search-bugfix/search_faulty.js": "3bfc5dad735428e73284a797e4d3f1b403e585041ecf4da0d5ed1a63fc77ee37",
+    "examples/03-search-bugfix/test_search.js": "cd37d69cd0fb211150afde68575a7fee2dd7be3d7e46df1fcbe41ad7de7f45da",
+    "templates/run-record.md": "138cf8e3197a561edd303471aef17ab92bf1335f99e6b079eff66b84693d987e"
+  }
+}

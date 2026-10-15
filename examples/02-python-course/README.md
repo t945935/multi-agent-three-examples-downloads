@@ -1,51 +1,25 @@
 # 實例二：Python 教材製作
 
-## 目標與分工
+將 [prompt.txt](prompt.txt) 依序交給教學設計、程式與試學角色。只用自行建立的假資料，絕不操作真實下載資料夾。
 
-製作「依副檔名整理下載資料夾」入門課，對象只學過變數、條件判斷與迴圈。
-
-教學設計 Agent 先交付課綱，程式 Agent 依課綱製作範例，試學 Agent 依教材實際操作，最後由主 Agent 整合修正。
-
-## 提示詞
-
-可直接開啟 [prompt.txt](prompt.txt) 複製完整指令。
-
-```text
-請以接力式多 Agent 製作 Python 入門課：依副檔名整理下載資料夾。
-交付繁體中文教材、可執行範例程式及三題練習。
-
-依序執行：
-1. 教學設計 Agent 產出學習目標、課綱、先備知識及練習題。
-2. 程式 Agent 讀取課綱後，製作範例程式與操作步驟。
-3. 試學 Agent 按教材從頭操作，記錄執行結果及理解障礙。
-4. 主 Agent 整合問題、安排修正並確認最終驗證結果。
-
-只用 Python 標準函式庫，只在臨時測試資料夾使用自行建立的假資料。
-預設只預覽整理結果；實際移動須使用明確參數，同名檔案不得覆寫。
-不要操作真實下載資料夾。
-
-驗證空資料夾、無副檔名、同名檔案及一般副檔名分類情境。
-回報執行命令與結果；無執行環境時明確標示未驗證。
-```
-
-## 可執行實例
-
-- `organize_downloads.py`：預設預覽，使用 `--apply` 才移動，且不覆寫同名檔案。
-- `test_organize_downloads.py`：涵蓋一般分類、空資料夾、無副檔名、同名檔案及子資料夾。
-
-請在自行建立的測試資料夾執行：
+從配件根目錄執行測試：
 
 ```bash
-python organize_downloads.py ./測試資料夾
-python -m unittest test_organize_downloads.py
+python3 -m unittest discover -s examples/02-python-course -p 'test_*.py'
 ```
 
-## 驗收清單
+預期 7 項測試通過。分類含 `.txt`→文件、`.csv`／`.xlsx`→試算表；未知副檔名與無副檔名→其他。
 
-- [ ] 教材能讓目標讀者逐步完成操作。
-- [ ] 預覽模式不修改任何檔案。
-- [ ] 測試涵蓋一般分類、空資料夾、無副檔名與同名檔案。
-- [ ] 沒有覆寫或遺失測試檔案，沒有操作真實下載資料夾。
-- [ ] 試學報告包含實際操作證據或明確的驗證缺口。
+以下在 Bash 建立新的臨時資料後先預覽，再明確套用：
 
-[回到專案首頁](../../README.md)
+```bash
+TMP_DIR="$(mktemp -d)"
+mkdir -p "$TMP_DIR/input"
+printf 'fake notes\n' > "$TMP_DIR/input/notes.txt"
+python3 examples/02-python-course/organize_downloads.py "$TMP_DIR/input"
+python3 examples/02-python-course/organize_downloads.py "$TMP_DIR/input" --apply
+```
+
+預覽不搬檔；套用後假檔在 `文件/notes.txt`。同批次目的路徑與既有檔名衝突會加序號，子資料夾不遞迴。程式沒有把任意輸入路徑自動限制在臨時目錄；安全邊界仍由操作者核對。不要讓另一個程序同時改動練習目錄。
+
+[回到首頁](../../README.md)
